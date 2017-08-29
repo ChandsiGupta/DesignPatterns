@@ -1,10 +1,9 @@
-			
- import java.util.*;
+import java.util.*;
  interface Item {
 	public String name();
 	public float price();
 	}
- class house
+ class House
 {
    private List<Item> items = new ArrayList<Item>();	
 
@@ -12,7 +11,7 @@
       items.add(item);
    }
 
-public float getcost()
+public float getCost()
 {
 float cost =0.0f;
 for(Item item :items)
@@ -21,14 +20,14 @@ cost+=item.price();
 }
 return cost;
 }
-public void showitems()
+public void showItems()
 {for (Item item : items) {
          System.out.print("Item : " + item.name());
          System.out.println(", Price : " + item.price());
       }		
    }	
 }
- class ownhouse implements Item {
+ class OwnHouse implements Item {
 
    @Override
    public float price() {
@@ -43,7 +42,7 @@ public void showitems()
 
 
 
- class renthouse implements Item {
+ class RentHouse implements Item {
 
    @Override
    public float price() {
@@ -57,16 +56,16 @@ public void showitems()
 }
  class Builder {
 
-   public house prepareownhouse (){
-      house hb = new house();
+   public House prepareOwnHouse (){
+      House hb = new House();
       
-      hb.addItem(new ownhouse ());
+      hb.addItem(new OwnHouse ());
       return hb;
    }   
 
-   public house preparerenthouse (){
-      house hb = new house();
-      hb.addItem(new renthouse());
+   public House prepareRentHouse (){
+      House hb = new House();
+      hb.addItem(new RentHouse());
       return hb;
    }
 }
@@ -77,13 +76,13 @@ public class TestBuilderPattern
 public static void main(String[] s)
 {
 Builder hob=new Builder();
-  house rent = hob.preparerenthouse();
+  House rent = hob.prepareRentHouse();
 System.out.println("Rent House");
- rent.showitems();
+ rent.showItems();
      
-  house own = hob.prepareownhouse();
+  House own = hob.prepareOwnHouse();
       System.out.println("\n\nOwn house");
-      own.showitems();
+      own.showItems();
       
    }
 }
